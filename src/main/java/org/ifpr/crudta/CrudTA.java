@@ -11,7 +11,7 @@ import org.ifpr.crudta.main.JanelaPrincipalJFrame;
 public class CrudTA {
 
     public static void main(String[] args) {
-        IntelliJTheme.setup(CrudTA.class.getClassLoader().getResourceAsStream("themes/latte.theme.json"));
+        IntelliJTheme.setup(CrudTA.class.getClassLoader().getResourceAsStream("themes/frappe.theme.json"));
 
         EventQueue.invokeLater(() -> new JanelaPrincipalJFrame().setVisible(true));
     }

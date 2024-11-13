@@ -4,11 +4,19 @@
  */
 package org.ifpr.crudta.main;
 
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import java.awt.Color;
+
 /**
  *
  * @author IFPR
  */
 public class UsuarioFormJDialog extends javax.swing.JDialog {
+
+    private final Border bordaOriginal;
+    private final Border bordaErro;
 
     /**
      * Creates new form UsuarioFormJDialog
@@ -16,6 +24,8 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
     public UsuarioFormJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        bordaOriginal = nomeTF.getBorder();
+        bordaErro = BorderFactory.createLineBorder(Color.RED);
     }
 
     /**
@@ -27,6 +37,7 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sexoGrupoRB = new javax.swing.ButtonGroup();
         painelPrincipal = new javax.swing.JPanel();
         dadosUsuarioLB = new javax.swing.JLabel();
         nomeLB = new javax.swing.JLabel();
@@ -61,9 +72,22 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
 
         sexoLB.setText("Sexo:");
 
+        try {
+            dataNascimentoTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            cpfTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         dadosObrigatoriosLB.setForeground(new java.awt.Color(255, 153, 153));
         dadosObrigatoriosLB.setText("* Dados obrigatórios");
 
+        sexoGrupoRB.add(masculinoRB);
         masculinoRB.setText("Masculino");
         masculinoRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,8 +95,10 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
             }
         });
 
+        sexoGrupoRB.add(femininoRB);
         femininoRB.setText("Feminino");
 
+        sexoGrupoRB.add(outroRB);
         outroRB.setText("Outro");
         outroRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +108,11 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
 
         salvarBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         salvarBT.setText("Salvar");
+        salvarBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarBTActionPerformed(evt);
+            }
+        });
 
         cancelarBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-circle.png"))); // NOI18N
         cancelarBT.setText("Cancelar");
@@ -102,42 +133,41 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dadosUsuarioLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emailLB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                                    .addComponent(nomeLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(dataNascimentoLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(emailLB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                    .addComponent(nomeLB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(20, 20, 20)
                                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emailTF)
-                                    .addComponent(nomeTF)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
-                                .addComponent(dataNascimentoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dataNascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(emailTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dataNascimentoTF)
+                                    .addComponent(nomeTF))))
                         .addContainerGap())
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addComponent(dadosObrigatoriosLB)
-                                .addGap(30, 30, 30))
+                                .addComponent(cpfLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(6, 6, 6))
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
                                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sexoLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cpfLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(6, 6, 6)))
+                                    .addComponent(dadosObrigatoriosLB)
+                                    .addComponent(sexoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addComponent(masculinoRB)
-                                .addGap(18, 18, 18)
-                                .addComponent(femininoRB)
-                                .addGap(24, 24, 24)
-                                .addComponent(outroRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(cancelarBT)
                                 .addGap(18, 18, 18)
                                 .addComponent(salvarBT))
-                            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                                .addComponent(cpfTF)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
+                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cpfTF)
+                                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(masculinoRB)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(femininoRB)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(outroRB, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
                                 .addContainerGap())))))
         );
         painelPrincipalLayout.setVerticalGroup(
@@ -189,9 +219,65 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void salvarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBTActionPerformed
+        if (isFormValid()) {
+            this.dispose();
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Formulário inválido, por favor verifique os campos em vermelho.", "ERRO DE VALIDAÇÃO", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_salvarBTActionPerformed
+
+    private boolean isFormValid() {
+        boolean isValid = true;
+
+        if (nomeTF.getText().strip().isBlank()) {
+            nomeTF.setBorder(bordaErro);
+            isValid = false;
+        } else {
+            nomeTF.setBorder(bordaOriginal);
+        }
+
+        if (emailTF.getText().strip().isBlank()) {
+            emailTF.setBorder(bordaErro);
+            isValid = false;
+        } else {
+            emailTF.setBorder(bordaOriginal);
+        }
+
+        if (cpfTF.getText().strip().isBlank()) {
+            cpfTF.setBorder(bordaErro);
+            isValid = false;
+        } else {
+            cpfTF.setBorder(bordaOriginal);
+        }
+
+        if (cpfTF.getText().strip().length() != 14) {
+            cpfTF.setBorder(bordaErro);
+            isValid = false;
+        } else {
+            cpfTF.setBorder(bordaOriginal);
+        }
+
+        return isValid;
+    }
+
+    public void limparCampos() {
+        nomeTF.setText("");
+        nomeTF.setBorder(bordaOriginal);
+        emailTF.setText("");
+        emailTF.setBorder(bordaOriginal);
+        cpfTF.setText("");
+        cpfTF.setBorder(bordaOriginal);
+        dataNascimentoTF.setText("");
+        dataNascimentoTF.setBorder(bordaOriginal);
+        sexoGrupoRB.clearSelection();
+    }
+
     private void cancelarBTActionPerformed(
             java.awt.event.ActionEvent evt) { // GEN-FIRST:event_cancelarBTActionPerformed
         this.dispose();
+        limparCampos();
     } // GEN-LAST:event_cancelarBTActionPerformed
 
     private void outroRBActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_outroRBActionPerformed
@@ -220,6 +306,7 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton outroRB;
     private javax.swing.JPanel painelPrincipal;
     private javax.swing.JButton salvarBT;
+    private javax.swing.ButtonGroup sexoGrupoRB;
     private javax.swing.JLabel sexoLB;
     // End of variables declaration//GEN-END:variables
 }
