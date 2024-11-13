@@ -17,8 +17,9 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
     /**
      * Creates new form UsuariosJInternalFrame
      */
-    public UsuariosJInternalFrame() {
-        usuarioFormJDialog = new UsuarioFormJDialog((JFrame) getParent(), false);
+    public UsuariosJInternalFrame(JFrame parent) {
+        System.out.println(getParent());
+        usuarioFormJDialog = new UsuarioFormJDialog(parent, true);
         initComponents();
     }
 
@@ -42,9 +43,9 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
         pesquisarBT = new javax.swing.JButton();
         limparBT = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        novoBT = new javax.swing.JButton();
+        editarBT = new javax.swing.JButton();
+        removerBT = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         usuariosTB = new javax.swing.JTable();
 
@@ -121,19 +122,24 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus-circle.png"))); // NOI18N
-        jButton3.setText("Novo");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        novoBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus-circle.png"))); // NOI18N
+        novoBT.setText("Novo");
+        novoBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                novoBTActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
-        jButton4.setText("Editar");
+        editarBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editarBT.setText("Editar");
+        editarBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarBTActionPerformed(evt);
+            }
+        });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minus-circle.png"))); // NOI18N
-        jButton5.setText("Remover");
+        removerBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minus-circle.png"))); // NOI18N
+        removerBT.setText("Remover");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,11 +147,11 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(novoBT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(editarBT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(removerBT)
                 .addContainerGap(561, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -153,9 +159,9 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(novoBT)
+                    .addComponent(editarBT)
+                    .addComponent(removerBT))
                 .addContainerGap())
         );
 
@@ -228,14 +234,16 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton3ActionPerformed
+    private void editarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBTActionPerformed
+        usuarioFormJDialog.setVisible(true);
+    }//GEN-LAST:event_editarBTActionPerformed
+
+    private void novoBTActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton3ActionPerformed
         usuarioFormJDialog.setVisible(true);
     } // GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton editarBT;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -245,8 +253,10 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton limparBT;
     private javax.swing.JLabel nomeLB;
     private javax.swing.JTextField nomeTF;
+    private javax.swing.JButton novoBT;
     private javax.swing.JButton pesquisarBT;
     private javax.swing.JPanel pesquisarPanel;
+    private javax.swing.JButton removerBT;
     private javax.swing.JPanel usuarioPanel;
     private javax.swing.JTable usuariosTB;
     // End of variables declaration//GEN-END:variables

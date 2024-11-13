@@ -16,7 +16,7 @@ public class JanelaPrincipalJFrame extends javax.swing.JFrame {
      * Creates new form JanelaPrincipalJFrame
      */
     public JanelaPrincipalJFrame() {
-        usuariosJInternalFrame = new UsuariosJInternalFrame();
+        usuariosJInternalFrame = new UsuariosJInternalFrame(this);
         initComponents();
         painelPrincipal.add(usuariosJInternalFrame);
     }
@@ -33,86 +33,93 @@ public class JanelaPrincipalJFrame extends javax.swing.JFrame {
         painelPrincipal = new javax.swing.JPanel();
         jMenuBar = new javax.swing.JMenuBar();
         arquivoMenu = new javax.swing.JMenu();
-        exportarMI = new javax.swing.JMenuItem();
-        sairMI = new javax.swing.JMenuItem();
-        administracaoMenu = new javax.swing.JMenu();
-        usuariosMI = new javax.swing.JMenuItem();
-        produtosMI = new javax.swing.JMenuItem();
+        exportarMNI = new javax.swing.JMenuItem();
+        sairMNI = new javax.swing.JMenuItem();
+        admMenu = new javax.swing.JMenu();
+        usuariosMNI = new javax.swing.JMenuItem();
+        produtosMNI = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
-        painelPrincipalLayout.setHorizontalGroup(painelPrincipalLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 400, Short.MAX_VALUE));
-        painelPrincipalLayout.setVerticalGroup(painelPrincipalLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 277, Short.MAX_VALUE));
+        painelPrincipalLayout.setHorizontalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        painelPrincipalLayout.setVerticalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 277, Short.MAX_VALUE)
+        );
 
         arquivoMenu.setText("Arquivo");
 
-        exportarMI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
-        exportarMI.setText("Exportar");
-        arquivoMenu.add(exportarMI);
+        exportarMNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        exportarMNI.setText("Exportar");
+        arquivoMenu.add(exportarMNI);
 
-        sairMI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/log-out.png"))); // NOI18N
-        sairMI.setText("Sair");
-        arquivoMenu.add(sairMI);
+        sairMNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/log-out.png"))); // NOI18N
+        sairMNI.setText("Sair");
+        sairMNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairMNIActionPerformed(evt);
+            }
+        });
+        arquivoMenu.add(sairMNI);
 
         jMenuBar.add(arquivoMenu);
 
-        administracaoMenu.setText("Administração");
+        admMenu.setText("Administração");
 
-        usuariosMI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        usuariosMI.setText("Usuários");
-        usuariosMI.addActionListener(new java.awt.event.ActionListener() {
+        usuariosMNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        usuariosMNI.setText("Usuários");
+        usuariosMNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuariosMIActionPerformed(evt);
+                usuariosMNIActionPerformed(evt);
             }
         });
-        administracaoMenu.add(usuariosMI);
+        admMenu.add(usuariosMNI);
 
-        produtosMI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping-bag.png"))); // NOI18N
-        produtosMI.setText("Produtos");
-        administracaoMenu.add(produtosMI);
+        produtosMNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping-bag.png"))); // NOI18N
+        produtosMNI.setText("Produtos");
+        admMenu.add(produtosMNI);
 
-        jMenuBar.add(administracaoMenu);
+        jMenuBar.add(admMenu);
 
         setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(
-                        painelPrincipal,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(
-                        painelPrincipal,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
-    } // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void usuariosMIActionPerformed(
+    private void sairMNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairMNIActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_sairMNIActionPerformed
+
+    private void usuariosMNIActionPerformed(
             java.awt.event.ActionEvent evt) { // GEN-FIRST:event_usuariosMIActionPerformed
         usuariosJInternalFrame.setVisible(true);
         this.pack();
     } // GEN-LAST:event_usuariosMIActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu administracaoMenu;
+    private javax.swing.JMenu admMenu;
     private javax.swing.JMenu arquivoMenu;
-    private javax.swing.JMenuItem exportarMI;
+    private javax.swing.JMenuItem exportarMNI;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel painelPrincipal;
-    private javax.swing.JMenuItem produtosMI;
-    private javax.swing.JMenuItem sairMI;
-    private javax.swing.JMenuItem usuariosMI;
+    private javax.swing.JMenuItem produtosMNI;
+    private javax.swing.JMenuItem sairMNI;
+    private javax.swing.JMenuItem usuariosMNI;
     // End of variables declaration//GEN-END:variables
 }

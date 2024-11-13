@@ -58,7 +58,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="dataNascimentoLB" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="dataNascimentoFTF" min="-2" pref="325" max="-2" attributes="0"/>
+                                  <Component id="dataNascimentoTF" min="-2" pref="325" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -92,7 +92,7 @@
                                   <Component id="salvarBT" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cpfFTF" max="32767" attributes="0"/>
+                                  <Component id="cpfTF" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -119,12 +119,12 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dataNascimentoLB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataNascimentoFTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dataNascimentoTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cpfLB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cpfFTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cpfTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -183,9 +183,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="emailTF">
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="dataNascimentoFTF">
+        <Component class="javax.swing.JFormattedTextField" name="dataNascimentoTF">
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="cpfFTF">
+        <Component class="javax.swing.JFormattedTextField" name="cpfTF">
         </Component>
         <Component class="javax.swing.JLabel" name="dadosObrigatoriosLB">
           <Properties>

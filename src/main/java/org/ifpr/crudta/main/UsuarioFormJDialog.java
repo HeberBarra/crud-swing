@@ -36,8 +36,8 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
         sexoLB = new javax.swing.JLabel();
         nomeTF = new javax.swing.JTextField();
         emailTF = new javax.swing.JTextField();
-        dataNascimentoFTF = new javax.swing.JFormattedTextField();
-        cpfFTF = new javax.swing.JFormattedTextField();
+        dataNascimentoTF = new javax.swing.JFormattedTextField();
+        cpfTF = new javax.swing.JFormattedTextField();
         dadosObrigatoriosLB = new javax.swing.JLabel();
         masculinoRB = new javax.swing.JRadioButton();
         femininoRB = new javax.swing.JRadioButton();
@@ -93,190 +93,101 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
-        painelPrincipalLayout.setHorizontalGroup(painelPrincipalLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelPrincipalLayout
-                        .createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(painelPrincipalLayout
-                                        .createSequentialGroup()
-                                        .addGroup(painelPrincipalLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(
-                                                        dadosUsuarioLB,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        Short.MAX_VALUE)
-                                                .addGroup(painelPrincipalLayout
-                                                        .createSequentialGroup()
-                                                        .addGroup(painelPrincipalLayout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING,
-                                                                        false)
-                                                                .addComponent(
-                                                                        emailLB,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        156,
-                                                                        Short.MAX_VALUE)
-                                                                .addComponent(
-                                                                        nomeLB,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        Short.MAX_VALUE))
-                                                        .addPreferredGap(
-                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(painelPrincipalLayout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(emailTF)
-                                                                .addComponent(nomeTF)))
-                                                .addGroup(
-                                                        javax.swing.GroupLayout.Alignment.TRAILING,
-                                                        painelPrincipalLayout
-                                                                .createSequentialGroup()
-                                                                .addComponent(
-                                                                        dataNascimentoLB,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        150,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                        javax.swing.LayoutStyle.ComponentPlacement
-                                                                                .UNRELATED)
-                                                                .addComponent(
-                                                                        dataNascimentoFTF,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        325,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addContainerGap())
-                                .addGroup(painelPrincipalLayout
-                                        .createSequentialGroup()
-                                        .addGroup(painelPrincipalLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(painelPrincipalLayout
-                                                        .createSequentialGroup()
-                                                        .addComponent(dadosObrigatoriosLB)
-                                                        .addGap(30, 30, 30))
-                                                .addGroup(painelPrincipalLayout
-                                                        .createSequentialGroup()
-                                                        .addGroup(painelPrincipalLayout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(
-                                                                        sexoLB,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        Short.MAX_VALUE)
-                                                                .addComponent(
-                                                                        cpfLB,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        Short.MAX_VALUE))
-                                                        .addGap(6, 6, 6)))
-                                        .addGroup(painelPrincipalLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(painelPrincipalLayout
-                                                        .createSequentialGroup()
-                                                        .addComponent(masculinoRB)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(femininoRB)
-                                                        .addGap(24, 24, 24)
-                                                        .addComponent(
-                                                                outroRB,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE))
-                                                .addGroup(
-                                                        javax.swing.GroupLayout.Alignment.TRAILING,
-                                                        painelPrincipalLayout
-                                                                .createSequentialGroup()
-                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                .addComponent(cancelarBT)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(salvarBT))
-                                                .addGroup(painelPrincipalLayout
-                                                        .createSequentialGroup()
-                                                        .addComponent(cpfFTF)
-                                                        .addContainerGap()))))));
-        painelPrincipalLayout.setVerticalGroup(painelPrincipalLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelPrincipalLayout
-                        .createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(
-                                dadosUsuarioLB,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                40,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(nomeLB)
-                                .addComponent(
-                                        nomeTF,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(emailLB)
-                                .addComponent(
-                                        emailTF,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(dataNascimentoLB)
-                                .addComponent(
-                                        dataNascimentoFTF,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cpfLB)
-                                .addComponent(
-                                        cpfFTF,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(sexoLB)
-                                .addComponent(masculinoRB)
-                                .addComponent(femininoRB)
-                                .addComponent(outroRB))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelPrincipalLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        painelPrincipalLayout.setHorizontalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dadosUsuarioLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(emailLB, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                    .addComponent(nomeLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(emailTF)
+                                    .addComponent(nomeTF)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
+                                .addComponent(dataNascimentoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dataNascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(painelPrincipalLayout.createSequentialGroup()
                                 .addComponent(dadosObrigatoriosLB)
-                                .addComponent(salvarBT)
-                                .addComponent(cancelarBT))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+                                .addGap(30, 30, 30))
+                            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sexoLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cpfLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(6, 6, 6)))
+                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                .addComponent(masculinoRB)
+                                .addGap(18, 18, 18)
+                                .addComponent(femininoRB)
+                                .addGap(24, 24, 24)
+                                .addComponent(outroRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cancelarBT)
+                                .addGap(18, 18, 18)
+                                .addComponent(salvarBT))
+                            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                                .addComponent(cpfTF)
+                                .addContainerGap())))))
+        );
+        painelPrincipalLayout.setVerticalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(dadosUsuarioLB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomeLB)
+                    .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLB)
+                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataNascimentoLB)
+                    .addComponent(dataNascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpfLB)
+                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sexoLB)
+                    .addComponent(masculinoRB)
+                    .addComponent(femininoRB)
+                    .addComponent(outroRB))
+                .addGap(18, 18, 18)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dadosObrigatoriosLB)
+                    .addComponent(salvarBT)
+                    .addComponent(cancelarBT))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(
-                        painelPrincipal,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(
-                        painelPrincipal,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
-    } // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarBTActionPerformed(
             java.awt.event.ActionEvent evt) { // GEN-FIRST:event_cancelarBTActionPerformed
@@ -294,12 +205,12 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarBT;
-    private javax.swing.JFormattedTextField cpfFTF;
     private javax.swing.JLabel cpfLB;
+    private javax.swing.JFormattedTextField cpfTF;
     private javax.swing.JLabel dadosObrigatoriosLB;
     private javax.swing.JLabel dadosUsuarioLB;
-    private javax.swing.JFormattedTextField dataNascimentoFTF;
     private javax.swing.JLabel dataNascimentoLB;
+    private javax.swing.JFormattedTextField dataNascimentoTF;
     private javax.swing.JLabel emailLB;
     private javax.swing.JTextField emailTF;
     private javax.swing.JRadioButton femininoRB;
