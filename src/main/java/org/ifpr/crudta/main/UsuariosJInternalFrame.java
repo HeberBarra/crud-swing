@@ -18,7 +18,6 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
      * Creates new form UsuariosJInternalFrame
      */
     public UsuariosJInternalFrame(JFrame parent) {
-        System.out.println(getParent());
         usuarioFormJDialog = new UsuarioFormJDialog(parent, true);
         initComponents();
     }
