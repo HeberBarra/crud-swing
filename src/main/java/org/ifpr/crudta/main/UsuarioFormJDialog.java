@@ -4,10 +4,20 @@
  */
 package org.ifpr.crudta.main;
 
+import org.ifpr.crudta.usuario.SexoPessoa;
+import org.ifpr.crudta.usuario.Usuario;
+import org.ifpr.crudta.usuario.dao.UsuarioDAO;
+
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import java.awt.Button;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  *
@@ -15,8 +25,11 @@ import java.awt.Color;
  */
 public class UsuarioFormJDialog extends javax.swing.JDialog {
 
+    private final DateTimeFormatter dateTimeFormatter;
+    private final UsuarioDAO usuarioDAO;
     private final Border bordaOriginal;
     private final Border bordaErro;
+    private Usuario usuario;
 
     /**
      * Creates new form UsuarioFormJDialog
@@ -24,6 +37,8 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
     public UsuarioFormJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        usuarioDAO = new UsuarioDAO();
         bordaOriginal = nomeTF.getBorder();
         bordaErro = BorderFactory.createLineBorder(Color.RED);
     }
@@ -221,6 +236,26 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
 
     private void salvarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBTActionPerformed
         if (isFormValid()) {
+            usuario = new Usuario();
+            usuario.setNome(nomeTF.getText());
+            usuario.setEmail(emailTF.getText());
+            usuario.setCpf(cpfTF.getText());
+            usuario.setDataNascimento(LocalDate.parse(dataNascimentoTF.getText(), dateTimeFormatter));
+
+            System.out.println(sexoGrupoRB.getElements());
+
+            for (Iterator<AbstractButton> iterator = sexoGrupoRB.getElements().asIterator(); iterator.hasNext(); ) {
+                AbstractButton botao = iterator.next();
+
+                if (botao.isSelected()) {
+                    usuario.setSexoPessoa(SexoPessoa.valueOf(botao.getText().toUpperCase()));
+                }
+
+            }
+
+            usuarioDAO.create(usuario);
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+
             this.dispose();
             return;
         }
