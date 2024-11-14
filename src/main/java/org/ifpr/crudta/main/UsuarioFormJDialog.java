@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.Iterator;
 
 /**
@@ -244,11 +245,11 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
 
             System.out.println(sexoGrupoRB.getElements());
 
-            for (Iterator<AbstractButton> iterator = sexoGrupoRB.getElements().asIterator(); iterator.hasNext(); ) {
-                AbstractButton botao = iterator.next();
+            for (Enumeration<AbstractButton> abstractButtonEnumeration = sexoGrupoRB.getElements(); abstractButtonEnumeration.hasMoreElements();) {
+                AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
 
-                if (botao.isSelected()) {
-                    usuario.setSexoPessoa(SexoPessoa.valueOf(botao.getText().toUpperCase()));
+                if (abstractButton.isSelected()) {
+                    usuario.setSexoPessoa(SexoPessoa.valueOf(abstractButton.getName().toUpperCase()));
                 }
 
             }
