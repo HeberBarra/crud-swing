@@ -329,8 +329,10 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
         emailTF.setText("");
         emailTF.setBorder(bordaOriginal);
         cpfTF.setText("");
+        cpfTF.setValue(null);
         cpfTF.setBorder(bordaOriginal);
         dataNascimentoTF.setText("");
+        dataNascimentoTF.setValue(null);
         dataNascimentoTF.setBorder(bordaOriginal);
         sexoGrupoRB.clearSelection();
     }

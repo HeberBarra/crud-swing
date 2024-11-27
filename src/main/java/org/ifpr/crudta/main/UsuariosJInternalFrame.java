@@ -191,6 +191,7 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
     }//GEN-LAST:event_editarBTActionPerformed
 
     private void novoBTActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton3ActionPerformed
+        usuarioFormJDialog.limparCampos();
         usuarioFormJDialog.setUsuario(new Usuario());
         usuarioFormJDialog.setVisible(true);
     } // GEN-LAST:event_jButton3ActionPerformed
