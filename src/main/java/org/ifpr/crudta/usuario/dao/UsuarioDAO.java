@@ -14,7 +14,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 
     @SuppressWarnings("unchecked")
     public List<Usuario> listLastTwenty() {
-        String hqlList = "from Usuario desc";
+        String hqlList = "from Usuario u order by u.id desc";
         Query query = entityManager.createQuery(hqlList);
         query.setMaxResults(20);
         return query.getResultList();

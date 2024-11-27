@@ -8,12 +8,14 @@ import org.ifpr.crudta.usuario.Usuario;
 import org.ifpr.crudta.usuario.UsuarioTableModel;
 
 import javax.swing.JFrame;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  *
  * @author IFPR
  */
-public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
+public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implements WindowListener {
 
     private UsuarioFormJDialog usuarioFormJDialog;
     private UsuarioTableModel usuarioTableModel;
@@ -23,6 +25,7 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
      */
     public UsuariosJInternalFrame(JFrame parent) {
         usuarioFormJDialog = new UsuarioFormJDialog(parent, true);
+        usuarioFormJDialog.addWindowListener(this);
         usuarioTableModel = new UsuarioTableModel();
         initComponents();
     }
@@ -191,6 +194,29 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
         usuarioFormJDialog.setUsuario(new Usuario());
         usuarioFormJDialog.setVisible(true);
     } // GEN-LAST:event_jButton3ActionPerformed
+
+    @Override
+    public void windowOpened(WindowEvent e) {}
+
+    @Override
+    public void windowClosing(WindowEvent e) {}
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        usuarioTableModel.atualizarTabela();
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {}
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {}
+
+    @Override
+    public void windowActivated(WindowEvent e) {}
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editarBT;

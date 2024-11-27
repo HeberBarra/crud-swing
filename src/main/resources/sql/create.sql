@@ -1,5 +1,7 @@
 CREATE DATABASE db_ifpr;
 
+USE db_ifpr;
+
 CREATE TABLE tb_usuario (
     id INT AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,

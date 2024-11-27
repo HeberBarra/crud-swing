@@ -8,13 +8,18 @@ import java.util.List;
 public class UsuarioTableModel extends AbstractTableModel {
 
     private final UsuarioDAO usuarioDAO;
-    private final List<Usuario> usuarios;
     private final String[] columnNames;
+    private List<Usuario> usuarios;
 
     public UsuarioTableModel() {
         this.usuarioDAO = new UsuarioDAO();
         this.usuarios = usuarioDAO.listLastTwenty();
         this.columnNames = new String[]{"ID", "NOME", "E-MAIL", "CPF", "DATA DE NASCIMENTO", "SEXO"};
+    }
+
+    public void atualizarTabela() {
+        usuarios = usuarioDAO.listLastTwenty();
+        fireTableDataChanged();
     }
 
     @Override
