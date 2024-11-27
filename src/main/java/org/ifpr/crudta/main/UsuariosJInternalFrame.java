@@ -5,6 +5,7 @@
 package org.ifpr.crudta.main;
 
 import org.ifpr.crudta.usuario.Usuario;
+import org.ifpr.crudta.usuario.UsuarioTableModel;
 
 import javax.swing.JFrame;
 
@@ -15,12 +16,14 @@ import javax.swing.JFrame;
 public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
 
     private UsuarioFormJDialog usuarioFormJDialog;
+    private UsuarioTableModel usuarioTableModel;
 
     /**
      * Creates new form UsuariosJInternalFrame
      */
     public UsuariosJInternalFrame(JFrame parent) {
         usuarioFormJDialog = new UsuarioFormJDialog(parent, true);
+        usuarioTableModel = new UsuarioTableModel();
         initComponents();
     }
 
@@ -33,10 +36,6 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         usuarioPanel = new javax.swing.JPanel();
         pesquisarPanel = new javax.swing.JPanel();
         nomeLB = new javax.swing.JLabel();
@@ -49,32 +48,6 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
         removerBT = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         usuariosTB = new javax.swing.JTable();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
 
         setClosable(true);
         setMaximizable(true);
@@ -166,32 +139,7 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        usuariosTB.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "E-mail", "Data Nascimento", "CPF", "Sexo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        usuariosTB.setModel(usuarioTableModel);
         usuariosTB.setCellSelectionEnabled(true);
         jScrollPane3.setViewportView(usuariosTB);
 
@@ -247,11 +195,7 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editarBT;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JButton limparBT;
     private javax.swing.JLabel nomeLB;
     private javax.swing.JTextField nomeTF;
