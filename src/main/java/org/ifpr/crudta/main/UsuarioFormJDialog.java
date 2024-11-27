@@ -232,33 +232,61 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void salvarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBTActionPerformed
-        if (isFormValid()) {
-            usuario = new Usuario();
-            usuario.setNome(nomeTF.getText());
-            usuario.setEmail(emailTF.getText());
-            usuario.setCpf(cpfTF.getText());
-            usuario.setDataNascimento(LocalDate.parse(dataNascimentoTF.getText(), dateTimeFormatter));
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-            System.out.println(sexoGrupoRB.getElements());
+    public void objectToForm() {
+        nomeTF.setText(usuario.getNome());
+        emailTF.setText(usuario.getEmail());
+        cpfTF.setText(usuario.getCpf());
+        dataNascimentoTF.setText(usuario.getDataNascimento().format(dateTimeFormatter));
 
-            for (Enumeration<AbstractButton> abstractButtonEnumeration = sexoGrupoRB.getElements(); abstractButtonEnumeration.hasMoreElements();) {
-                AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
+        SexoPessoa sexoPessoa = usuario.getSexoPessoa();
+        for (Enumeration<AbstractButton> abstractButtonEnumeration = sexoGrupoRB.getElements(); abstractButtonEnumeration.hasMoreElements();) {
+            AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
 
-                if (abstractButton.isSelected()) {
-                    usuario.setSexoPessoa(SexoPessoa.valueOf(abstractButton.getName().toUpperCase()));
-                }
-
+            if (abstractButton.getName().toUpperCase().equals(sexoPessoa.toString())) {
+                abstractButton.setSelected(true);
             }
-
-            usuarioDAO.create(usuario);
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
-
-            this.dispose();
-            return;
         }
 
-        JOptionPane.showMessageDialog(this, "Formulário inválido, por favor verifique os campos em vermelho.", "ERRO DE VALIDAÇÃO", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void formToObject() {
+        usuario.setNome(nomeTF.getText());
+        usuario.setEmail(emailTF.getText());
+        usuario.setCpf(cpfTF.getText());
+        usuario.setDataNascimento(LocalDate.parse(dataNascimentoTF.getText(), dateTimeFormatter));
+
+        System.out.println(sexoGrupoRB.getElements());
+
+        for (Enumeration<AbstractButton> abstractButtonEnumeration = sexoGrupoRB.getElements(); abstractButtonEnumeration.hasMoreElements();) {
+            AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
+
+            if (abstractButton.isSelected()) {
+                usuario.setSexoPessoa(SexoPessoa.valueOf(abstractButton.getName().toUpperCase()));
+            }
+
+        }
+    }
+
+    private void salvarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBTActionPerformed
+        if (!isFormValid()) {
+            JOptionPane.showMessageDialog(this, "Formulário inválido, por favor verifique os campos em vermelho.", "ERRO DE VALIDAÇÃO", JOptionPane.ERROR_MESSAGE);
+        }
+
+        formToObject();
+
+        if (usuario.getId() == 0) {
+            usuarioDAO.create(usuario);
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            usuarioDAO.update(usuario);
+            JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso.", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        this.dispose();
     }//GEN-LAST:event_salvarBTActionPerformed
 
     private boolean isFormValid() {

@@ -4,6 +4,8 @@
  */
 package org.ifpr.crudta.main;
 
+import org.ifpr.crudta.usuario.Usuario;
+
 import javax.swing.JFrame;
 
 /**
@@ -238,6 +240,7 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_editarBTActionPerformed
 
     private void novoBTActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton3ActionPerformed
+        usuarioFormJDialog.setUsuario(new Usuario());
         usuarioFormJDialog.setVisible(true);
     } // GEN-LAST:event_jButton3ActionPerformed
 
