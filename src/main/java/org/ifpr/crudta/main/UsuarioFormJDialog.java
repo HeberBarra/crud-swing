@@ -246,7 +246,7 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
         for (Enumeration<AbstractButton> abstractButtonEnumeration = sexoGrupoRB.getElements(); abstractButtonEnumeration.hasMoreElements();) {
             AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
 
-            if (abstractButton.getName().toUpperCase().equals(sexoPessoa.toString())) {
+            if (abstractButton.getText().toUpperCase().equals(sexoPessoa.toString())) {
                 abstractButton.setSelected(true);
             }
         }
@@ -265,7 +265,7 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
             AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
 
             if (abstractButton.isSelected()) {
-                usuario.setSexoPessoa(SexoPessoa.valueOf(abstractButton.getName().toUpperCase()));
+                usuario.setSexoPessoa(SexoPessoa.valueOf(abstractButton.getText().toUpperCase()));
             }
 
         }
