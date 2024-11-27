@@ -8,7 +8,7 @@ import java.util.List;
 public class GenericDAO<E> {
 
     private final Class<E> classe;
-    private final EntityManager entityManager;
+    protected final EntityManager entityManager;
 
     public GenericDAO(Class<E> classe) {
         entityManager = ConectorBanco.getInstance().createEntityManager();
