@@ -6,8 +6,11 @@ package org.ifpr.crudta.main;
 
 import org.ifpr.crudta.usuario.Usuario;
 import org.ifpr.crudta.usuario.UsuarioTableModel;
+import org.ifpr.crudta.usuario.dao.UsuarioDAO;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -17,6 +20,7 @@ import java.awt.event.WindowListener;
  */
 public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implements WindowListener {
 
+    private UsuarioDAO usuarioDAO;
     private UsuarioFormJDialog usuarioFormJDialog;
     private UsuarioTableModel usuarioTableModel;
 
@@ -27,7 +31,13 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
         usuarioFormJDialog = new UsuarioFormJDialog(parent, true);
         usuarioFormJDialog.addWindowListener(this);
         usuarioTableModel = new UsuarioTableModel();
+        usuarioDAO = new UsuarioDAO();
         initComponents();
+        editarBT.setEnabled(false);
+        removerBT.setEnabled(false);
+        usuariosTB.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        usuariosTB.getTableHeader().setReorderingAllowed(false);
+        usuariosTB.getTableHeader().setResizingAllowed(false);
     }
 
     /**
@@ -117,6 +127,11 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
 
         removerBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minus-circle.png"))); // NOI18N
         removerBT.setText("Remover");
+        removerBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,6 +159,16 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
 
         usuariosTB.setModel(usuarioTableModel);
         usuariosTB.setCellSelectionEnabled(true);
+        usuariosTB.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usuariosTBFocusLost(evt);
+            }
+        });
+        usuariosTB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuariosTBMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(usuariosTB);
 
         javax.swing.GroupLayout usuarioPanelLayout = new javax.swing.GroupLayout(usuarioPanel);
@@ -187,8 +212,42 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBTActionPerformed
+        int id = (int) usuariosTB.getValueAt(usuariosTB.getSelectedRow(), 0);
+        Usuario usuario = usuarioDAO.findById(id);
+        usuarioFormJDialog.setUsuario(usuario);
+        usuarioFormJDialog.objectToForm();
         usuarioFormJDialog.setVisible(true);
     }//GEN-LAST:event_editarBTActionPerformed
+
+    private void usuariosTBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuariosTBMouseClicked
+        if (usuariosTB.getSelectedRow() != -1) {
+            editarBT.setEnabled(true);
+            removerBT.setEnabled(true);
+        } else {
+            editarBT.setEnabled(false);
+            removerBT.setEnabled(false);
+        }
+    }//GEN-LAST:event_usuariosTBMouseClicked
+
+    private void usuariosTBFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usuariosTBFocusLost
+        if (usuariosTB.getSelectedRow() == -1) {
+            editarBT.setEnabled(false);
+            removerBT.setEnabled(false);
+        }
+    }//GEN-LAST:event_usuariosTBFocusLost
+
+    private void removerBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerBTActionPerformed
+        int id = (int) usuariosTB.getValueAt(usuariosTB.getSelectedRow(), 0);
+        int confirmacao;
+
+        confirmacao = JOptionPane.showConfirmDialog(this, "Deseja apagar o usuário de ID: %d?".formatted(id), "Confirmar Delete", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if (confirmacao == JOptionPane.OK_OPTION) {
+            Usuario usuario = usuarioDAO.findById(id);
+            usuarioDAO.delete(usuario);
+            usuarioTableModel.atualizarTabela();
+        }
+    }//GEN-LAST:event_removerBTActionPerformed
 
     private void novoBTActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton3ActionPerformed
         usuarioFormJDialog.limparCampos();
@@ -205,6 +264,8 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
     @Override
     public void windowClosed(WindowEvent e) {
         usuarioTableModel.atualizarTabela();
+        editarBT.setEnabled(false);
+        removerBT.setEnabled(false);
     }
 
     @Override
