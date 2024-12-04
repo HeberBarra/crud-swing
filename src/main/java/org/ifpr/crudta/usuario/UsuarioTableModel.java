@@ -23,6 +23,11 @@ public class UsuarioTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public void pesquisarPorNome(String nome) {
+        usuarios = usuarioDAO.pesquisarPorNome(nome);
+        fireTableDataChanged();
+    }
+
     @Override
     public int getRowCount() {
         return usuarios.size();

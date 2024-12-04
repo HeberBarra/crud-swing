@@ -20,4 +20,12 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         return query.getResultList();
     }
 
+    @SuppressWarnings("unchecked")
+    public List<Usuario> pesquisarPorNome(String nome) {
+        String hqlSearch = "from Usuario u where lower(u.nome) like concat('%', :nome, '%') order by u.nome asc";
+        Query query = entityManager.createQuery(hqlSearch);
+        query.setParameter("nome", nome);
+        return query.getResultList();
+    }
+
 }

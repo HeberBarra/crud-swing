@@ -72,9 +72,19 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
 
         pesquisarBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         pesquisarBT.setText("Pesquisar");
+        pesquisarBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarBTActionPerformed(evt);
+            }
+        });
 
         limparBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         limparBT.setText("Limpar");
+        limparBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pesquisarPanelLayout = new javax.swing.GroupLayout(pesquisarPanel);
         pesquisarPanel.setLayout(pesquisarPanelLayout);
@@ -246,8 +256,20 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
             Usuario usuario = usuarioDAO.findById(id);
             usuarioDAO.delete(usuario);
             usuarioTableModel.atualizarTabela();
+            JOptionPane.showMessageDialog(this, "Usuário apagado com sucesso", "Usuário Apagado", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_removerBTActionPerformed
+
+    private void pesquisarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarBTActionPerformed
+        String nomeParaPesquisa = nomeTF.getText().strip();
+        usuarioTableModel.pesquisarPorNome(nomeParaPesquisa);
+    }//GEN-LAST:event_pesquisarBTActionPerformed
+
+    private void limparBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparBTActionPerformed
+        usuarioTableModel.atualizarTabela();
+        nomeTF.setText("");
+        nomeTF.requestFocus();
+    }//GEN-LAST:event_limparBTActionPerformed
 
     private void novoBTActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton3ActionPerformed
         usuarioFormJDialog.limparCampos();
