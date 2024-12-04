@@ -222,7 +222,12 @@ public class UsuariosJInternalFrame extends javax.swing.JInternalFrame implement
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBTActionPerformed
-        int id = (int) usuariosTB.getValueAt(usuariosTB.getSelectedRow(), 0);
+        int numeroLinha = usuariosTB.getSelectedRow();
+        if (numeroLinha < 0) {
+            return;
+        }
+
+        int id = (int) usuarioTableModel.getValueAt(numeroLinha, 0);
         Usuario usuario = usuarioDAO.findById(id);
         usuarioFormJDialog.setUsuario(usuario);
         usuarioFormJDialog.objectToForm();
