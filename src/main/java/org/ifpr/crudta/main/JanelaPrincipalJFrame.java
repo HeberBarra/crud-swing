@@ -11,14 +11,17 @@ package org.ifpr.crudta.main;
 public class JanelaPrincipalJFrame extends javax.swing.JFrame {
 
     private UsuariosJInternalFrame usuariosJInternalFrame;
+    private ProdutosJInternalFrame produtosJInternalFrame;
 
     /**
      * Creates new form JanelaPrincipalJFrame
      */
     public JanelaPrincipalJFrame() {
         usuariosJInternalFrame = new UsuariosJInternalFrame(this);
+        produtosJInternalFrame = new ProdutosJInternalFrame(this);
         initComponents();
         painelPrincipal.add(usuariosJInternalFrame);
+        painelPrincipal.add(produtosJInternalFrame);
     }
 
     /**
@@ -82,6 +85,11 @@ public class JanelaPrincipalJFrame extends javax.swing.JFrame {
 
         produtosMNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping-bag.png"))); // NOI18N
         produtosMNI.setText("Produtos");
+        produtosMNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produtosMNIActionPerformed(evt);
+            }
+        });
         admMenu.add(produtosMNI);
 
         jMenuBar.add(admMenu);
@@ -106,8 +114,12 @@ public class JanelaPrincipalJFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_sairMNIActionPerformed
 
-    private void usuariosMNIActionPerformed(
-            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_usuariosMIActionPerformed
+    private void produtosMNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosMNIActionPerformed
+       produtosJInternalFrame.setVisible(true);
+       this.pack();
+    }//GEN-LAST:event_produtosMNIActionPerformed
+
+    private void usuariosMNIActionPerformed(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_usuariosMIActionPerformed
         usuariosJInternalFrame.setVisible(true);
         this.pack();
     } // GEN-LAST:event_usuariosMIActionPerformed

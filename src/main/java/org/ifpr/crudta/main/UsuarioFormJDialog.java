@@ -259,8 +259,6 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
         usuario.setCpf(cpfTF.getText());
         usuario.setDataNascimento(LocalDate.parse(dataNascimentoTF.getText(), dateTimeFormatter));
 
-        System.out.println(sexoGrupoRB.getElements());
-
         for (Enumeration<AbstractButton> abstractButtonEnumeration = sexoGrupoRB.getElements(); abstractButtonEnumeration.hasMoreElements();) {
             AbstractButton abstractButton = abstractButtonEnumeration.nextElement();
 
@@ -274,6 +272,7 @@ public class UsuarioFormJDialog extends javax.swing.JDialog {
     private void salvarBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBTActionPerformed
         if (!isFormValid()) {
             JOptionPane.showMessageDialog(this, "Formulário inválido, por favor verifique os campos em vermelho.", "ERRO DE VALIDAÇÃO", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         formToObject();
